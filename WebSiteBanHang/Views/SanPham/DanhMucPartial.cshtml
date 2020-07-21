@@ -1,0 +1,23 @@
+﻿@using WebSiteBanHang.Models
+@model IEnumerable<SanPham>
+<div class="sellers">
+    <div class="of-left-in">
+        <h3 class="tag">Thương hiệu</h3>
+    </div>
+    <div class="tags">
+        @foreach (var groupItem in Model.GroupBy(n => n.LoaiSanPham))
+        {
+            if (groupItem.Key != null)
+            {
+                <ul>
+                    @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
+                    {
+                        <li><a href="@Url.Action("SanPham","SanPham", new {@MaLoaiSP= groupItem.Key.MaLoaiSP, @MaNSX=item.Key.MaNSX })">@item.Key.TenNSX</a></li>                        
+                    }
+                </ul>
+            }
+        }
+        <div class="clearfix"> </div>
+    </div>
+
+</div>

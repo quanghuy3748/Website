@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="contact">
+    <h2>Quản lý đơn hàng</h2>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="@Url.Action("DangXuLy", "QLDonHang")">Đơn hàng đang xử lý</a></li>
+        <li role="presentation" class="active"><a href="@Url.Action("DangVanChuyen", "QLDonHang")">Đơn hàng đang vận chuyển</a></li>
+        <li role="presentation" class="active"><a href="@Url.Action("ThanhCong", "QLDonHang")">Đơn hàng thành công</a></li>
+    </ul>
+
+
+</div>
+
+<style>
+    .banner {
+        display: none;
+    }
+</style>

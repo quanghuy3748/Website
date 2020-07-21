@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebSiteBanHang.Models.BinhLuan>
+@{
+    ViewBag.Title = "VietBinhLuan";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+<h3>Bình luận</h3>
+@if (Session["TaiKhoan"] == null)
+{
+    <a href="#">Bạn cần đăng nhập để bình luận</a>
+}
+else
+{
+    using (Html.BeginForm("VietBinhLuan", "SanPham", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaSP", (int?)ViewBag.MaSP)
+        @Html.TextArea("NoiDung")
+        <input type="submit" value="Đăng" />
+    }
+    <div id="comments">
+        @foreach (var item in Model)
+        {
+        <div class="comment">
+            <div class="comment-name">@item.NoiDungBL</div>
+            <div class="comment-content">@item.MaSP</div>
+        </div>
+        }        
+    </div>
+    
+}

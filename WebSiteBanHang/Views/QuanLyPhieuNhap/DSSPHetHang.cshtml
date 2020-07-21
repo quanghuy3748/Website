@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebSiteBanHang.Models.SanPham>
+@{
+    ViewBag.Title = "DSSPHetHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+<h2>Danh sách các sản phẩm hết hàng</h2>
+<br />  <br /><br />
+@grid.GetHtml(
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("MaSP", header: "Mã sản phẩm"),
+        grid.Column("TenSP", header: "Tên sản phẩm"),
+        grid.Column("HinhAnh", header: "Hình ảnh", format: p=>Html.Raw("<img width=\"150\" height=\"50\" src=\"../Content/HinhAnhSP/" + p.HinhAnh + "\">")),
+        grid.Column(format: p=> Html.ActionLink("Nhập hàng","NhapHangDon", new { id = p.MaSP }, new { @target ="_blank"}))
+    ))
+
+<style>
+    .divTable {
+        width: 100%;
+        border: 1px solid #999999;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead > th > a {
+        background-color: green;
+    }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+</style>

@@ -1,0 +1,73 @@
+﻿@using WebSiteBanHang.Models
+
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="contact">
+
+    <div class="container">
+        <h1>Đóng góp ý kiến </h1>
+        <div class="contact-form">
+
+            <div class="col-md-8 contact-grid">
+                <form method="post" action="@Url.Action("SendMail")">
+                    
+                    <table class="table table-striped">                       
+                        <tr>
+                            <td>
+                                <label>Tiêu đề:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="subject" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Nội dung:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="body" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                
+                            </td>
+                            <td>
+                                <input type="submit" class="btn btn-info" value="Gửi" />
+                            </td>
+                        </tr>
+                    </table>                    
+                </form>
+            </div>
+            <div class="col-md-4 contact-in">
+
+                <div class="address-more">
+                    <h4>Địa chỉ</h4>
+                    <p>Cửa hàng đồ điện tử New Store</p>
+                    <p>ngõ 38/24 Xuân La</p>
+                    <p>Tây Hồ, Hà Nội. </p>
+                </div>
+                <div class="address-more">
+                    <h4>Liên hệ</h4>
+                    <p>Số điện thoại:+84386388917</p>
+                    <p>Fax:190-4509-494</p>
+                    <p>Email:<a href="mailto:contact@example.com"> quanghuy3748@gmail.com</a></p>
+                </div>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .banner {
+        display: none;
+    }
+</style>

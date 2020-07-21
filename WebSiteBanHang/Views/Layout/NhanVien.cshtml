@@ -1,0 +1,16 @@
+﻿@using WebSiteBanHang.Models
+
+<div class="navigation">
+    <ul>
+        @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+        {
+            ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+            <li style="color: mintcream">Chào @tv.HoTen</li>
+
+        }
+        else
+        {
+            <li style="display:inline;"><a id="btnDangNhap" href="#">Đăng Nhập</a></li>
+        }
+    </ul>
+</div>

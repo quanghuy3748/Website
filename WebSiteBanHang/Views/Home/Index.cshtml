@@ -1,0 +1,35 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@{ 
+    IEnumerable<SanPham> lstDTM = (IEnumerable<SanPham>)ViewBag.ListDTM;
+    IEnumerable<SanPham> lstLTM = ViewBag.ListLTM as IEnumerable<SanPham>;
+
+}
+
+@*Bước 1: tách code và lồng partial view*@
+@*Bước 2: Gán dữ liệu từ Controller thông qua Viewbag vào partial view*@
+<div class="content-top">
+    <h1>Điện thoại mới nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/DTMoiNhatPartial.cshtml", lstDTM)
+        </div>
+
+    </div>
+
+    <h1>Laptop mới nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/LTMoiNhatPartial.cshtml", lstLTM)
+        </div>
+
+    </div>
+</div>
+
+

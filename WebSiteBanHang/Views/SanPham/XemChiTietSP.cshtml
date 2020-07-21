@@ -1,0 +1,79 @@
+﻿@using WebSiteBanHang.Models;
+@model SanPham
+@{
+    ViewBag.Title = "XemChiTietSP";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class="col-md-9 product-price1">
+    <div class="col-md-5 single-top">
+        <div class="flexslider">
+            <ul class="slides" style="width: 1200%; transition-duration: 0s; transform: translate3d(-304px, 0px, 0px);">
+                <li data-thumb="@Url.Content("~/Content/HinhAnhSP/" + Model.HinhAnh)">
+                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.HinhAnh)" />
+                </li>
+            </ul>
+        </div>
+        <!-- FlexSlider -->
+        <script defer="" src="~/Content/js/jquery.flexslider.js"></script>
+        <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen">
+
+        <script>
+            // Can also be used with $(document).ready()
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+            });
+        </script>
+    </div>
+    <div class="col-md-7 single-top-in simpleCart_shelfItem">
+        <div class="single-para ">
+            <h4>@Model.TenSP</h4>
+            <div class="star-on">
+                <ul class="star-footer">
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i> </i></a></li>
+                    <li><a href="#"><i> </i></a></li>
+                </ul>
+                <div class="review">
+                    <a href="#"> Lượt xem: @Model.LuotXem </a>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+            <h5 class="item_price">@Model.DonGia.Value.ToString("#,##") VNĐ</h5>
+            <h3 style="color:black">Thông số kỹ thuật</h3>
+            <p>
+                @Html.Raw(Model.CauHinh)
+            </p>
+            <a href="@Url.Action("ThemGioHang","GioHang", new { @MaSP = Model.MaSP, @strURL = Request.Url.ToString()} )" class="add-cart item_add">Giỏ hàng</a>
+        </div>
+
+    </div>
+    <br />
+    <div class="clearfix"> </div>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Session["TaiKhoan"] != null)
+            {
+                @Html.Action("Index","BinhLuan", new { MaSP = Model.MaSP})
+            }
+            else
+            {
+            <a href="#">Bạn phải đăng nhập để bình luận</a>
+            }
+        </div>
+    </div>
+
+    <hr />
+    @Html.Raw(Model.MoTa)
+    <!---->
+
+
+</div>
+

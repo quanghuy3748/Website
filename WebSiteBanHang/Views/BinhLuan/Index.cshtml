@@ -1,0 +1,30 @@
+﻿@using WebSiteBanHang.Models;
+@model SanPham
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h3>Bình luận</h3>
+@if (Session["TaiKhoan"] == null)
+{
+    <a href="@Url.Action("DangNhap","Home")">Bạn cần đăng nhập để bình luận</a>
+}
+else
+{
+    using (Html.BeginForm("Create", "BinhLuan", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaSP", (int?)ViewBag.MaSP)
+        @Html.Hidden("MaThanhVien", (int?)ViewBag.MaTV)
+        @Html.TextArea("NoiDung")
+        <input type="submit" value="Đăng" />}
+}
+<div id="comments">
+    @*@foreach (var item in Model)
+    {
+        <div class="comment-name"> @item.ThanhVien.TaiKhoan</div>
+        <div class="comment-content"> @item.NoiDungBL</div>
+    }*@
+</div>
+

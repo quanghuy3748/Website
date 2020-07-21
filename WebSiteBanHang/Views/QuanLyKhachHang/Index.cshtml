@@ -1,0 +1,54 @@
+﻿@using WebSiteBanHang.Models
+@model IEnumerable<ThanhVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    //Khởi tạo control WebGrid
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+@Html.ActionLink("Thêm mới thành viên", "ThemThanhVien", null, new { @class = "btn btn -success" })
+<h3 style="text-align: center; color: red">Danh sách thành viên</h3>
+<br />
+<br />
+
+@*Thể hiện dữ liệu thông qua control webGrid*@
+@grid.GetHtml(
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridRowStyle",
+    columns: grid.Columns(
+        grid.Column("MaThanhVien", "Mã thành viên"),
+        grid.Column("TaiKhoan", "TaiKhoan"),
+        grid.Column("DiaChi", "Địa chỉ"),
+        grid.Column("Email", "Email"),
+        grid.Column("SoDienThoai", "Số điện thoại"),
+        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaThanhVien }))
+    ))
+
+<style>
+    .divTable {
+        width: 100%;
+        border: 1px solid #999999;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead > th > a {
+        background-color: green;
+    }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+</style>
+
